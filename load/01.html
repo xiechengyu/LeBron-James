@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>主页面</title>
+  <link rel="stylesheet" href="../lib/css/bootstrap.css">
+  <link rel="stylesheet" href="../lib/css/nprogress.css">
+  <style>
+    body{
+      background: url("../lib/img/h.jpg") no-repeat;
+      background-size: cover;
+    }
+    .loading {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, .6);
+      font-size: 30px;
+    }
+    h4{
+      margin-top: 30px;
+    }
+    h5{
+      margin-top: 30px;
+    }
+  </style>
+  <script src="../lib/js/nprogress.js"></script>
+</head>
+<body>
+  <div class="container pt-4">
+    <h1>勒布朗詹姆斯</h1>
+    <hr>
+    <div class="row">
+      <aside class="col-md-3">
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" href="01.html">个人简介</a>
+          <a class="list-group-item list-group-item-action" href="02.html">早年经历</a>
+          <a class="list-group-item list-group-item-action" href="03.html">NBA生涯</a>
+          <a class="list-group-item list-group-item-action" href="04.html">个人生活</a>
+          <a class="list-group-item list-group-item-action" href="05.html">技术特点</a>
+          <a class="list-group-item list-group-item-action" href="06.html">国际赛场</a>
+        </div>
+      </aside>
+      <main id="main" class="col-md-9">
+        <h2>个人简介</h2>
+        <img src="../lib/img/lbj.jpg" height="230" width="268" style="margin-top: 30px;"/>
+        <div style="margin-top: 30px;">
+          &emsp;&emsp;勒布朗·詹姆斯（LeBron James），1984年12月30日出生在美国俄亥俄州阿克伦，美国职业篮球运动员，司职小前锋，绰号“小皇帝”，效力于NBA洛杉矶湖人队。
+          詹姆斯在2003年NBA选秀中于首轮第1顺位被克利夫兰骑士队选中。在2009年与2010年蝉联NBA最有价值球员（MVP）。2010年，詹姆斯转会至迈阿密热火队。
+          2012年，詹姆斯得到NBA个人生涯的第3座常规赛MVP，第1个总冠军和总决赛MVP。并代表美国男篮获得了伦敦奥运会金牌，追平了迈克尔·乔丹在1992年所创的纪录。2013年，詹姆斯获得第4个常规赛MVP、第2个NBA总冠军和第2个总决赛MVP，实现两连冠。
+          2014年，詹姆斯回归骑士。2016年，詹姆斯带领骑士逆转战胜卫冕冠军勇士获得队史首个总冠军和个人第3个总决赛MVP。2018年7月10日，詹姆斯正式与湖人签下4年1.53亿美元的合同。 [1]
+          詹姆斯篮球智商极高、突破犀利，拥有出色的视野和传球技术，被认为是NBA有史以来最为全能的球员之一。
+        </div>
+        <hr>
+      </main>
+    </div>
+  </div>
+  <div class="loading">正在玩命加载中...</div>
+  <script src="../lib/js/jquery.js"></script>
+  <script>
+    $(function ($) {
+      $(document)
+        .ajaxStart(function () {
+          NProgress.start()
+        })
+        .ajaxStop(function () {
+          NProgress.done()
+        })
+
+      // 有一个独立的作用域，顺便确保页面加载完成执行
+      $('.list-group-item').on('click', function () {
+        var url = $(this).attr('href')
+        $('#main').load(url + ' #main > *')
+        return false
+      })
+    })
+  </script>
+</body>
+</html>
